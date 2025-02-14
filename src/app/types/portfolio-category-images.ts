@@ -1,0 +1,45 @@
+export const GALLERY_IMAGES = [
+  {
+    src: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg",
+    width: 1920,
+    height: 1280,
+    title: "Autumn Wedding",
+    description: "Beautiful autumn wedding ceremony in the park",
+    subcategories: ["Ceremonies", "Outdoor", "Wedding"],
+    category: "wedding",
+  },
+  {
+    src: "https://images.pexels.com/photos/1589216/pexels-photo-1589216.jpeg",
+    width: 1920,
+    height: 1280,
+    title: "Corporate Portrait",
+    description: "Professional headshot for business profile",
+    subcategories: ["Portrait", "Corporate", "Headshots"],
+    category: "portrait",
+  },
+  {
+    src: "https://images.pexels.com/photos/2403392/pexels-photo-2403392.jpeg",
+    width: 1920,
+    height: 1280,
+    description: "Fashion week runway show in Paris",
+    subcategories: ["Fashion", "Runway", "Editorial"],
+    category: "portrait",
+  },
+  {
+    src: "https://images.pexels.com/photos/2788488/pexels-photo-2788488.jpeg",
+    width: 1920,
+    height: 1280,
+    description: "Annual tech conference keynote",
+    subcategories: ["Events", "Corporate Events", "Conferences"],
+    category: "portrait",
+  },
+  {
+    src: "https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg",
+    width: 1920,
+    height: 1280,
+    title: "Modern Architecture",
+    subcategories: ["Architecture", "Commercial", "Industrial"],
+    category: "portrait",
+  },
+  // Add at least 10 more images here with varied subcategories
+];
