@@ -25,7 +25,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl mb-8">About Me</h2>
           <p className="text-gray-600 leading-relaxed">
-            With over a decade of experience capturing life's most precious
+            With over a decade of experience capturing life&rsquo;s most precious
             moments, I specialize in wedding, portrait, and landscape
             photography. My style combines natural light with creative
             composition to tell your unique story.
@@ -243,9 +243,9 @@ export default function Home() {
       {/* Contact Section */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl mb-8">Let's Work Together</h2>
+          <h2 className="text-3xl mb-8">Let&rsquo;s Work Together</h2>
           <p className="text-gray-600 mb-8">
-            I'm currently available for bookings and would love to discuss your
+            I&rsquo;m currently available for bookings and would love to discuss your
             project.
           </p>
           <Link

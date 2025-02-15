@@ -18,7 +18,7 @@ export default function CategoryGallery() {
   const category = params.category as string;
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
-  const [imagesLoaded, setImagesLoaded] = useState(0);
+  const [, setImagesLoaded] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   // Validate category exists

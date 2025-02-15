@@ -1,13 +1,13 @@
+import { use } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SERVICES } from "../../types/services";
 
-export default function ServicePage({
-  params,
-}: {
-  params: { service: string };
-}) {
+type Params = Promise<{ service: string }>
+
+export default function ServicePage(props: { params: Params }) {
+  const params = use(props.params);
   const service = SERVICES[params.service as keyof typeof SERVICES];
 
   if (!service) {

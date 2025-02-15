@@ -73,7 +73,7 @@ export default function ServicesPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-light mb-6">Ready to Get Started?</h2>
           <p className="text-gray-600 mb-8">
-            Let's discuss your photography needs and create something amazing
+            Let&rsquo;s discuss your photography needs and create something amazing
             together.
           </p>
           <Link
