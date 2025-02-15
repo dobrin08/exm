@@ -1,35 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { useParams, notFound } from "next/navigation";
 import {
-  GalleryImage,
   PORTFOLIO_CATEGORIES,
   PortfolioCategory,
+  getCategoryImages,
+  getCategorySubcategories,
 } from "../../types/portfolio-categories";
-
-// Sample gallery data
-import { GALLERY_IMAGES } from "../../types/portfolio-category-images";
+import LoadingMask from "../../components/LoadingMask";
 
 export default function CategoryGallery() {
   const params = useParams();
   const category = params.category as string;
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [imagesLoaded, setImagesLoaded] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Validate category exists
   if (!PORTFOLIO_CATEGORIES.some((cat) => cat.slug === category)) {
     notFound();
   }
 
-  const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
-
-  // Filter images by category first
-  const categoryImages = GALLERY_IMAGES.filter(
-    (img) => img.category === category
-  );
+  const categoryImages = getCategoryImages(category as PortfolioCategory);
 
   const filteredImages =
     selectedFilters.length === 0
@@ -38,10 +35,26 @@ export default function CategoryGallery() {
           img.subcategories.some((sub) => selectedFilters.includes(sub))
         );
 
-  // Get subcategories only for this category
-  const allSubcategories = Array.from(
-    new Set(categoryImages.flatMap((img) => img.subcategories))
-  ).sort();
+  // Handle image load completion
+  const handleImageLoad = () => {
+    setImagesLoaded((prev) => {
+      const newCount = prev + 1;
+
+      if (newCount === filteredImages.length) {
+        setIsLoading(false);
+      }
+
+      return newCount;
+    });
+  };
+
+  // Reset loading state when filters change
+  useEffect(() => {
+    setImagesLoaded(0);
+  }, [selectedFilters]);
+
+  // Get subcategories for this category
+  const allSubcategories = getCategorySubcategories(category as PortfolioCategory);
 
   const toggleFilter = (subcategory: string) => {
     setSelectedFilters((prev) =>
@@ -53,6 +66,8 @@ export default function CategoryGallery() {
 
   return (
     <main className="min-h-screen bg-white py-20 px-4">
+      <LoadingMask isLoading={isLoading} />
+      
       <div className="max-w-7xl mx-auto">
         <h1 className="text-5xl font-light text-center mb-12 capitalize">
           {category.replace("-", " ")} Photography
@@ -87,7 +102,10 @@ export default function CategoryGallery() {
                 src={image.src}
                 alt={image.title || "Gallery image"}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
+                onLoad={handleImageLoad}
+                priority={index < 6}
               />
               {image.title && (
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">

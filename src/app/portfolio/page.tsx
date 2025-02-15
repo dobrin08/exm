@@ -23,7 +23,9 @@ export default function Portfolio() {
                       <Image
                         src={category.image}
                         alt={category.title}
+                        priority={category.priority}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -47,7 +49,7 @@ export default function Portfolio() {
                     {category.subcategories.map((sub, idx) => (
                       <div
                         key={idx}
-                        className="px-4 py-2 bg-gradient-to-r from-gray-50 to-gray-100 rounded-full text-sm text-gray-700 hover:from-black hover:to-gray-800 hover:text-white transform hover:-translate-y-1 transition-all duration-300 cursor-pointer border border-gray-100 hover:border-black/10 hover:shadow-lg backdrop-blur-sm"
+                        className="px-3 py-1 bg-gradient-to-r from-gray-50 to-gray-100 rounded-full text-xs text-gray-700 border border-gray-100 backdrop-blur-sm"
                       >
                         {sub}
                       </div>
