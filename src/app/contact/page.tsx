@@ -19,7 +19,7 @@ export default function ContactPage() {
 
     try {
       // Here you would typically send the data to your backend
-      // For now, we'll simulate an API call
+      // For now, we&rsquo;ll simulate an API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       setSubmitStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
@@ -42,7 +42,7 @@ export default function ContactPage() {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-5xl font-light text-center mb-4">Contact Me</h1>
         <p className="text-gray-600 text-center mb-12">
-          Let's discuss your photography needs. Fill out the form below and I'll get back to you soon.
+          Let&rsquo;s discuss your photography needs. Fill out the form below and I&rsquo;ll get back to you soon.
         </p>
 
         <div className="bg-white p-8 rounded-lg shadow-sm">
@@ -116,7 +116,7 @@ export default function ContactPage() {
 
             {submitStatus === "success" && (
               <div className="p-4 bg-green-50 text-green-800 rounded">
-                Thank you for your message! I'll get back to you soon.
+                Thank you for your message! I&rsquo;ll get back to you soon.
               </div>
             )}
 

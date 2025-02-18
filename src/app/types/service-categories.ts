@@ -96,7 +96,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     process: [
       {
         title: "Initial Consultation",
-        description: "We'll discuss your vision, style preferences, and wedding details",
+        description: "We&rsquo;ll discuss your vision, style preferences, and wedding details",
       },
       {
         title: "Booking & Planning",
@@ -470,7 +470,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         ],
       },
       {
-        name: "Collector's Edition",
+        name: "Collector&rsquo;s Edition",
         price: "$500",
         features: [
           "Up to 30x40 Size",
