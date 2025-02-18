@@ -30,6 +30,7 @@ export default function SidebarMenu() {
     { href: "/portfolio", label: "Portfolio" },
     { href: "/services", label: "Services" },
     { href: "/contact", label: "Contact" },
+    { href: "/about", label: "About" },
   ];
 
   return (
