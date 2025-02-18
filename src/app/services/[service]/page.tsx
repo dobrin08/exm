@@ -1,12 +1,13 @@
 "use client";
 
-import { use, useState } from 'react';
+import { use, useState, useEffect } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { getServiceBySlug } from "../../types/service-categories";
+import LoadingMask from "../../components/LoadingMask";
 
 type Params = Promise<{ service: string }>
 
@@ -14,13 +15,34 @@ export default function ServicePage(props: { params: Params }) {
   const params = use(props.params);
   const service = getServiceBySlug(params.service);
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [imagesLoaded, setImagesLoaded] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   if (!service) {
     notFound();
   }
 
+  // Handle image load completion
+  const handleImageLoad = () => {
+    setImagesLoaded((prev) => {
+      const newCount = prev + 1;
+      // Count hero image + gallery images
+      if (newCount === service.gallery.length + 1) {
+        setIsLoading(false);
+      }
+      return newCount;
+    });
+  };
+
+  // Reset loading state when service changes
+  useEffect(() => {
+    setImagesLoaded(0);
+  }, [service]);
+
   return (
     <main className="min-h-screen">
+      <LoadingMask isLoading={isLoading} />
+      
       {/* Hero Section */}
       <section className="relative h-[60vh]">
         <Image
@@ -28,6 +50,8 @@ export default function ServicePage(props: { params: Params }) {
           alt={service.title}
           fill
           className="object-cover"
+          onLoad={handleImageLoad}
+          priority
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex items-center justify-center">
@@ -106,6 +130,8 @@ export default function ServicePage(props: { params: Params }) {
                   fill
                   sizes="(max-width: 768px) 50vw, 33vw"
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  onLoad={handleImageLoad}
+                  priority={index < 6}
                 />
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                   <p className="text-white text-lg">{image.alt}</p>
