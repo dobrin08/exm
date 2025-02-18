@@ -24,6 +24,7 @@ export default function ContactPage() {
       setSubmitStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
+      console.error("Error submitting form:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);

@@ -15,7 +15,7 @@ export default function ServicePage(props: { params: Params }) {
   const params = use(props.params);
   const service = getServiceBySlug(params.service);
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const [imagesLoaded, setImagesLoaded] = useState(0);
+  const [, setImagesLoaded] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   if (!service) {
