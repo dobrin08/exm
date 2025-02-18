@@ -31,7 +31,7 @@ export default function ServicesPage() {
                 key={index}
                 className="group bg-white border border-gray-100 hover:border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all"
               >
-                <div className="relative h-64">
+                <div className="relative h-64 overflow-hidden">
                   <Image
                     src={service.image}
                     alt={service.title}
@@ -39,24 +39,12 @@ export default function ServicesPage() {
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-5xl">{service.icon}</span>
-                  </div>
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-light mb-2">{service.title}</h3>
-                  <p className="text-gray-600 mb-4">{service.description}</p>
-                  <p className="text-xl font-light mb-6">{service.price}</p>
-                  <ul className="space-y-2 mb-8">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-gray-600">
-                        <span className="mr-2">✓</span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-gray-600 mb-8">{service.description}</p>
                   <Link
-                    href={service.link}
+                    href={`/services/${service.slug}`}
                     className="inline-block w-full text-center bg-black text-white px-6 py-3 hover:bg-gray-800 transition-colors rounded"
                   >
                     Learn More

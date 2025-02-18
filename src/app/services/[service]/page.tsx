@@ -1,14 +1,19 @@
-import { use } from 'react';
+"use client";
+
+import { use, useState } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { SERVICES } from "../../types/services";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import { getServiceBySlug } from "../../types/service-categories";
 
 type Params = Promise<{ service: string }>
 
 export default function ServicePage(props: { params: Params }) {
   const params = use(props.params);
-  const service = SERVICES[params.service as keyof typeof SERVICES];
+  const service = getServiceBySlug(params.service);
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   if (!service) {
     notFound();
@@ -19,7 +24,7 @@ export default function ServicePage(props: { params: Params }) {
       {/* Hero Section */}
       <section className="relative h-[60vh]">
         <Image
-          src={service.hero}
+          src={service.image}
           alt={service.title}
           fill
           className="object-cover"
@@ -90,16 +95,35 @@ export default function ServicePage(props: { params: Params }) {
           <h2 className="text-4xl font-light text-center mb-16">Gallery</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {service.gallery.map((image, index) => (
-              <div key={index} className="relative aspect-square">
+              <div 
+                key={index} 
+                className="relative aspect-square group cursor-pointer overflow-hidden"
+                onClick={() => setSelectedImage(index)}
+              >
                 <Image
                   src={image.src}
                   alt={image.alt}
                   fill
-                  className="object-cover"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                  <p className="text-white text-lg">{image.alt}</p>
+                </div>
               </div>
             ))}
           </div>
+
+          {/* Lightbox */}
+          <Lightbox
+            open={selectedImage !== null}
+            close={() => setSelectedImage(null)}
+            index={selectedImage || 0}
+            slides={service.gallery.map((img) => ({
+              src: img.src,
+              alt: img.alt,
+            }))}
+          />
         </div>
       </section>
     </main>
