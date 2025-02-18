@@ -54,7 +54,7 @@ export default function AboutPage() {
       >
         <h1 className="text-5xl font-light text-center mb-4">About Me</h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          A passionate photographer dedicated to capturing life's most precious moments 
+          A passionate photographer dedicated to capturing life&rsquo;s most precious moments 
           through the lens of artistic vision and technical excellence.
         </p>
       </motion.div>
@@ -98,7 +98,7 @@ export default function AboutPage() {
             <p className="text-gray-600 mb-6">
               My passion for photography began over a decade ago, inspired by the 
               desire to capture the beauty in everyday moments. From weddings to 
-              portraits, I've had the privilege of telling countless stories through 
+              portraits, I&rsquo;ve had the privilege of telling countless stories through 
               my lens.
             </p>
             <div className="flex flex-wrap gap-3">
