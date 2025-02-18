@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display, Montserrat } from "next/font/google";
 import "./globals.css";
+import SidebarMenu from "./components/SidebarMenu";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -18,20 +19,21 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "EXM",
-  description: "Exposure & Memories",
+  title: "Photography Portfolio",
+  description: "Professional photography services",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
         className={`${montserrat.variable} ${inter.variable} ${playfairDisplay.variable} antialiased`}
       >
+        <SidebarMenu />
         <main>{children}</main>
       </body>
     </html>
