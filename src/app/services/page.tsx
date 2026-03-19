@@ -4,7 +4,7 @@ import { SERVICE_CATEGORIES } from "../types/service-categories";
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-base">
       {/* Hero Section */}
       <section className="relative h-[40vh]">
         <Image
@@ -13,10 +13,10 @@ export default function ServicesPage() {
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/30" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-          <h1 className="text-6xl font-light mb-4">Our Services</h1>
-          <p className="text-xl max-w-2xl text-center">
+          <h1 className="text-6xl font-display mb-4">Our Services</h1>
+          <p className="text-xl font-body max-w-2xl text-center">
             Professional photography services tailored to your unique needs
           </p>
         </div>
@@ -29,7 +29,7 @@ export default function ServicesPage() {
             {SERVICE_CATEGORIES.map((service, index) => (
               <div
                 key={index}
-                className="group bg-white border border-gray-100 hover:border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all"
+                className="group bg-surface border border-subtle hover:border-secondary/30 overflow-hidden transition-all"
               >
                 <div className="relative h-64 overflow-hidden">
                   <Image
@@ -41,11 +41,11 @@ export default function ServicesPage() {
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
                 </div>
                 <div className="p-8">
-                  <h3 className="text-2xl font-light mb-2">{service.title}</h3>
-                  <p className="text-gray-600 mb-8">{service.description}</p>
+                  <h3 className="text-2xl font-display mb-2">{service.title}</h3>
+                  <p className="text-secondary font-body mb-8">{service.description}</p>
                   <Link
                     href={`/services/${service.slug}`}
-                    className="inline-block w-full text-center bg-black text-white px-6 py-3 hover:bg-gray-800 transition-colors rounded"
+                    className="inline-block w-full text-center text-[11px] tracking-[0.12em] uppercase bg-accent text-accent-contrast px-6 py-3 hover:bg-accent/90 transition-colors cursor-pointer"
                   >
                     Learn More
                   </Link>
@@ -57,16 +57,16 @@ export default function ServicesPage() {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-20 px-4 bg-base-alt">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-light mb-6">Ready to Get Started?</h2>
-          <p className="text-gray-600 mb-8">
+          <h2 className="text-4xl font-display mb-6 text-primary">Ready to Get Started?</h2>
+          <p className="text-secondary font-body mb-8">
             Let&rsquo;s discuss your photography needs and create something amazing
             together.
           </p>
           <Link
             href="/contact"
-            className="inline-block bg-black text-white px-8 py-3 hover:bg-gray-800 transition-colors"
+            className="inline-block text-[11px] tracking-[0.12em] uppercase bg-accent text-accent-contrast px-8 py-3 hover:bg-accent/90 transition-colors cursor-pointer"
           >
             Contact Us
           </Link>

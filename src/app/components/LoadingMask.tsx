@@ -26,12 +26,12 @@ export default function LoadingMask({ isLoading }: LoadingMaskProps) {
 
   return (
     <div
-      className={`fixed inset-0 bg-white z-50 transition-opacity duration-300 flex items-center justify-center
+      className={`fixed inset-0 bg-base z-50 transition-opacity duration-300 flex items-center justify-center
         ${show ? "opacity-100" : "opacity-0"}`}
     >
       <div className="flex flex-col items-center gap-4">
-        <div className="w-12 h-12 border-4 border-black border-t-transparent rounded-full animate-spin" />
-        <p className="text-lg font-light">Loading gallery...</p>
+        <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+        <p className="text-sm text-secondary">Loading gallery...</p>
       </div>
     </div>
   );

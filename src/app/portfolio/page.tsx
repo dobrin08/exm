@@ -4,11 +4,19 @@ import { PORTFOLIO_CATEGORIES } from "../types/portfolio-categories";
 
 export default function Portfolio() {
   return (
-    <main className="min-h-screen bg-white">
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-5xl font-light text-center mb-16">Portfolio</h1>
+    <main className="min-h-screen bg-base font-body">
+      {/* Hero Section */}
+      <section className="py-28 px-4 text-center">
+        <p className="text-muted text-[11px] tracking-[0.2em] uppercase mb-4">
+          Selected Work
+        </p>
+        <h1 className="font-display text-5xl md:text-6xl text-primary">
+          Portfolio
+        </h1>
+      </section>
 
+      <section className="pb-20 px-4">
+        <div className="max-w-7xl mx-auto">
           <div className="space-y-32">
             {PORTFOLIO_CATEGORIES.map((category, index) => (
               <div
@@ -18,8 +26,8 @@ export default function Portfolio() {
                 } gap-8 items-center`}
               >
                 <div className="flex-1">
-                  <Link href={`/portfolio/${category.slug}`}>
-                    <div className="relative aspect-[16/9] overflow-hidden group">
+                  <Link href={`/portfolio/${category.slug}`} className="cursor-pointer">
+                    <div className="relative aspect-[16/9] overflow-hidden group border border-subtle">
                       <Image
                         src={category.image}
                         alt={category.title}
@@ -35,36 +43,36 @@ export default function Portfolio() {
 
                 <div className="flex-1 space-y-6">
                   <div className="space-y-4">
-                    <h2 className="text-4xl font-light tracking-wide hover:tracking-wider transition-all duration-500">
+                    <h2 className="text-4xl font-display tracking-wide hover:tracking-wider transition-all duration-500 text-primary">
                       {category.title}
                     </h2>
-                    <div className="w-20 h-[2px] bg-black/70 transform origin-left hover:scale-x-150 transition-transform duration-500"></div>
+                    <div className="w-20 h-[2px] bg-subtle transform origin-left hover:scale-x-150 transition-transform duration-500"></div>
                   </div>
-                  
-                  <p className="text-gray-600 text-lg leading-relaxed font-light">
+
+                  <p className="text-secondary text-lg leading-relaxed font-light">
                     {category.description}
                   </p>
-                  
+
                   <div className="flex flex-wrap gap-3">
                     {category.subcategories.map((sub, idx) => (
                       <div
                         key={idx}
-                        className="px-3 py-1 bg-gradient-to-r from-gray-50 to-gray-100 rounded-full text-xs text-gray-700 border border-gray-100 backdrop-blur-sm"
+                        className="px-3 py-1 bg-base-alt text-secondary border border-subtle text-xs"
                       >
                         {sub}
                       </div>
                     ))}
                   </div>
-                  
+
                   <div className="pt-4">
                     <Link
                       href={`/portfolio/${category.slug}`}
-                      className="group relative inline-block px-6 py-2 text-xs font-medium tracking-wider uppercase 
-                      bg-black text-white rounded overflow-hidden transition-all duration-300 hover:shadow-xl"
+                      className="cursor-pointer group relative inline-block px-6 py-2 text-[11px] tracking-[0.12em] uppercase font-medium
+                      bg-accent text-accent-contrast overflow-hidden transition-all duration-300 hover:border hover:border-subtle"
                     >
                       <span className="relative z-10">View Gallery</span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-black transform scale-x-0 
-                      group-hover:scale-x-100 transition-transform duration-500 origin-left"/>
+                      <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-black transform scale-x-0
+                      group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                     </Link>
                   </div>
                 </div>

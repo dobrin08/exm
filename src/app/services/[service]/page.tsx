@@ -42,7 +42,7 @@ export default function ServicePage(props: { params: Params }) {
   return (
     <main className="min-h-screen">
       <LoadingMask isLoading={isLoading} />
-      
+
       {/* Hero Section */}
       <section className="relative h-[60vh]">
         <Image
@@ -53,39 +53,39 @@ export default function ServicePage(props: { params: Params }) {
           onLoad={handleImageLoad}
           priority
         />
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/30" />
         <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-6xl font-light text-white">{service.title}</h1>
+          <h1 className="text-6xl font-display text-white">{service.title}</h1>
         </div>
       </section>
 
       {/* Description */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-base">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-xl text-gray-600">{service.description}</p>
+          <p className="text-xl text-secondary font-body">{service.description}</p>
         </div>
       </section>
 
       {/* Packages */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-20 px-4 bg-base-alt">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-light text-center mb-16">Packages</h2>
+          <h2 className="text-4xl font-display text-center mb-16 text-primary">Packages</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {service.packages.map((pkg, index) => (
-              <div key={index} className="bg-white p-8 shadow-lg rounded-lg">
-                <h3 className="text-2xl font-light mb-4">{pkg.name}</h3>
-                <p className="text-3xl mb-8">{pkg.price}</p>
+              <div key={index} className="bg-surface border border-subtle p-8">
+                <h3 className="text-2xl font-display mb-4 text-primary">{pkg.name}</h3>
+                <p className="text-3xl font-display mb-8 text-primary">{pkg.price}</p>
                 <ul className="space-y-4">
                   {pkg.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center">
-                      <span className="mr-2">✓</span>
+                    <li key={idx} className="flex items-center text-secondary font-body">
+                      <span className="w-1 h-1 rounded-full bg-subtle mr-3 shrink-0"></span>
                       {feature}
                     </li>
                   ))}
                 </ul>
                 <Link
                   href="/contact"
-                  className="inline-block w-full text-center bg-black text-white px-6 py-3 mt-8 hover:bg-gray-800 transition-colors rounded"
+                  className="inline-block w-full text-center text-[11px] tracking-[0.12em] uppercase bg-accent text-accent-contrast px-6 py-3 mt-8 hover:bg-accent/90 transition-colors cursor-pointer"
                 >
                   Book Now
                 </Link>
@@ -96,17 +96,17 @@ export default function ServicePage(props: { params: Params }) {
       </section>
 
       {/* Process */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-base">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-light text-center mb-16">Our Process</h2>
+          <h2 className="text-4xl font-display text-center mb-16 text-primary">Our Process</h2>
           <div className="grid md:grid-cols-4 gap-8">
             {service.process.map((step, index) => (
               <div key={index} className="text-center">
-                <div className="w-16 h-16 rounded-full bg-black text-white flex items-center justify-center text-2xl mx-auto mb-4">
+                <div className="w-12 h-12 bg-accent text-accent-contrast flex items-center justify-center text-xl font-body mx-auto mb-4">
                   {index + 1}
                 </div>
-                <h3 className="text-xl mb-2">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
+                <h3 className="text-xl font-display mb-2 text-primary">{step.title}</h3>
+                <p className="text-secondary font-body">{step.description}</p>
               </div>
             ))}
           </div>
@@ -114,13 +114,13 @@ export default function ServicePage(props: { params: Params }) {
       </section>
 
       {/* Gallery */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-20 px-4 bg-base-alt">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-light text-center mb-16">Gallery</h2>
+          <h2 className="text-4xl font-display text-center mb-16 text-primary">Gallery</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {service.gallery.map((image, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="relative aspect-square group cursor-pointer overflow-hidden"
                 onClick={() => setSelectedImage(index)}
               >
@@ -133,8 +133,8 @@ export default function ServicePage(props: { params: Params }) {
                   onLoad={handleImageLoad}
                   priority={index < 6}
                 />
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                  <p className="text-white text-lg">{image.alt}</p>
+                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                  <p className="text-white text-lg font-body">{image.alt}</p>
                 </div>
               </div>
             ))}

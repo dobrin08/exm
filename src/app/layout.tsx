@@ -1,26 +1,30 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, Montserrat } from "next/font/google";
+import { DM_Serif_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
 import SidebarMenu from "./components/SidebarMenu";
+import Footer from "./components/Footer";
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const dmSerifDisplay = DM_Serif_Display({
+  variable: "--font-dm-serif-display",
   subsets: ["latin"],
+  weight: "400",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair-display",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Photography Portfolio",
-  description: "Professional photography services",
+  title: "John Doe Photography | Professional Photography Services",
+  description:
+    "Professional photography portfolio showcasing wedding, portrait, fashion, and commercial photography. Capturing moments, creating memories.",
+  openGraph: {
+    title: "John Doe Photography",
+    description:
+      "Professional photography services — capturing moments, creating memories.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -31,10 +35,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.variable} ${inter.variable} ${playfairDisplay.variable} antialiased`}
+        className={`${dmSerifDisplay.variable} ${dmSans.variable} font-body antialiased bg-base text-primary`}
       >
         <SidebarMenu />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

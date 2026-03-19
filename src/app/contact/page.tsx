@@ -39,18 +39,22 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen py-20 px-4 bg-gray-50">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-5xl font-light text-center mb-4">Contact Me</h1>
-        <p className="text-gray-600 text-center mb-12">
+    <main className="min-h-screen bg-base">
+      {/* Hero Section */}
+      <div className="py-28 text-center">
+        <p className="text-muted text-[12px] tracking-[0.12em] uppercase mb-4">Contact</p>
+        <h1 className="font-display text-5xl text-primary mb-4">Get in Touch</h1>
+        <p className="text-secondary max-w-lg mx-auto">
           Let&rsquo;s discuss your photography needs. Fill out the form below and I&rsquo;ll get back to you soon.
         </p>
+      </div>
 
-        <div className="bg-white p-8 rounded-lg shadow-sm">
+      <div className="max-w-4xl mx-auto px-4 pb-20">
+        <div className="bg-surface border border-subtle p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="name" className="block text-sm text-secondary mb-2">
                   Name
                 </label>
                 <input
@@ -60,11 +64,11 @@ export default function ContactPage() {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-black"
+                  className="w-full bg-base border border-subtle text-primary px-4 py-3 min-h-[44px] focus:outline-none focus:border-primary transition-colors"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="email" className="block text-sm text-secondary mb-2">
                   Email
                 </label>
                 <input
@@ -74,13 +78,13 @@ export default function ContactPage() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-black"
+                  className="w-full bg-base border border-subtle text-primary px-4 py-3 min-h-[44px] focus:outline-none focus:border-primary transition-colors"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="subject" className="block text-sm text-secondary mb-2">
                 Subject
               </label>
               <select
@@ -89,7 +93,7 @@ export default function ContactPage() {
                 required
                 value={formData.subject}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-black"
+                className="w-full bg-base border border-subtle text-primary px-4 py-3 min-h-[44px] focus:outline-none focus:border-primary transition-colors"
               >
                 <option value="">Select a subject</option>
                 <option value="Wedding Photography">Wedding Photography</option>
@@ -101,7 +105,7 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="message" className="block text-sm text-secondary mb-2">
                 Message
               </label>
               <textarea
@@ -111,18 +115,18 @@ export default function ContactPage() {
                 rows={6}
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-black"
+                className="w-full bg-base border border-subtle text-primary px-4 py-3 min-h-[44px] focus:outline-none focus:border-primary transition-colors"
               />
             </div>
 
             {submitStatus === "success" && (
-              <div className="p-4 bg-green-50 text-green-800 rounded">
+              <div className="p-4 bg-success text-success-text">
                 Thank you for your message! I&rsquo;ll get back to you soon.
               </div>
             )}
 
             {submitStatus === "error" && (
-              <div className="p-4 bg-red-50 text-red-800 rounded">
+              <div className="p-4 bg-error text-error-text">
                 There was an error sending your message. Please try again.
               </div>
             )}
@@ -130,7 +134,7 @@ export default function ContactPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-black text-white py-3 px-6 rounded hover:bg-gray-800 transition-colors disabled:bg-gray-400"
+              className="w-full bg-accent text-accent-contrast py-3 px-6 text-[12px] tracking-[0.12em] uppercase hover:bg-accent-hover transition-colors disabled:opacity-40 cursor-pointer"
             >
               {isSubmitting ? "Sending..." : "Send Message"}
             </button>
@@ -139,4 +143,4 @@ export default function ContactPage() {
       </div>
     </main>
   );
-} 
+}
